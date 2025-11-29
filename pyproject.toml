@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=67", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bt-brief"
+version = "0.1.0"
+description = "Daily Business Times brief via RSS, OpenAI summarization, and SMTP delivery."
+authors = [{ name = "bt-brief maintainers" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "python-dotenv>=1.0.1",
+  "feedparser>=6.0.11",
+  "openai>=1.14.0"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["bt_brief"]
