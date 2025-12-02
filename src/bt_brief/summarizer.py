@@ -19,7 +19,7 @@ def summarize_entries(entries: list[dict], settings: Settings) -> list[dict]:
         content = entry.get("summary") or entry.get("description") or ""
         title = entry.get("title", "Untitled")
 
-        # Send a chat completion request to gpt-4.1-mini with a system prompt to create a concise 2–3 sentence news brief and a user prompt containing the title and original summary.
+        # Send a chat completion request to gpt-4.1-mini with a system prompt to create a fuller, still concise news brief and a user prompt containing the title and original summary.
         response = client.chat.completions.create(
             model="gpt-4.1-mini",
             temperature=0.2,
@@ -27,8 +27,10 @@ def summarize_entries(entries: list[dict], settings: Settings) -> list[dict]:
                 {
                     "role": "system",
                     "content": (
-                        "You condense news articles into crisp 2-3 sentence briefs. "
-                        "Keep the key facts, dates, and impact. Avoid speculation."
+                        "You summarize news articles into compact but complete briefs. "
+                        "Deliver the crux in 4-6 sentences: who/what happened, the key "
+                        "drivers or context, the stakes or implications, and any next steps. "
+                        "Keep facts, dates, figures, and named entities precise. Avoid fluff or speculation."
                     ),
                 },
                 {
@@ -36,7 +38,7 @@ def summarize_entries(entries: list[dict], settings: Settings) -> list[dict]:
                     "content": (
                         f"Title: {title}\n\n"
                         f"Original Summary:\n{content}\n\n"
-                        "Write a concise digest version."
+                        "Write a single-paragraph brief that gives enough detail to understand the article without reading it."
                     ),
                 },
             ],
