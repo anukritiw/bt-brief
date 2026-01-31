@@ -4,10 +4,21 @@ Stateless daily digest builder that fetches Business Times RSS headlines, summar
 
 ## Setup
 - Python 3.10+
-- `pip install -e .`
-- Copy `.env.example` to `.env` and fill in your keys.
+- Create/activate a virtualenv (example): `python -m venv .bt-brief-env && source .bt-brief-env/bin/activate`
+- Install deps: `pip install -e .`
+- Copy `.env.example` to `.env` and fill in your keys (OpenAI + SMTP). Example:
+
+```
+OPENAI_API_KEY=sk-...
+RSS_URL=https://www.businesstimes.com.sg/rss/top-stories
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your.address@gmail.com
+SMTP_PASSWORD=app-specific-password
+FROM_EMAIL=your.address@gmail.com
+TO_EMAIL=recipient@example.com
+```
 
 ## Running
-- From the repo root (after installing dependencies): `python -m bt_brief.main`
-- As requested, you can also invoke via: `python -m bt-brief.main`
-- Example daily cron hook: `./scripts/run_daily.sh`
+- Ensure your virtualenv is active (example): `source .bt-brief-env/bin/activate`
+- Run `python -m bt_brief.main`
