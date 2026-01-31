@@ -17,3 +17,6 @@ venv/
 # Editor / IDE config
 .vscode/
 *.egg-info/
+
+# Local helper scripts
+scripts/run_daily.sh

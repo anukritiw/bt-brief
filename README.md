@@ -22,4 +22,3 @@ TO_EMAIL=recipient@example.com
 ## Running
 - Ensure your virtualenv is active (example): `source .bt-brief-env/bin/activate`
 - Run `python -m bt_brief.main`
-- Example daily cron hook (ensures env activation inside): `./scripts/run_daily.sh`
